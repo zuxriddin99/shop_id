@@ -1,0 +1,482 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ID - SHOP || Shopping-Cart</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon
+     ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <!-- google fonts -->
+    <link href="{% static 'css/asd.css' %}" rel='stylesheet' type='text/css'>
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- animate css -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- pe-icon-7-stroke -->
+    <link rel="stylesheet" href="{% static 'css/pe-icon-7-stroke.min.css' %}">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+    <!-- Image Zoom CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'css/img-zoom/jquery.simpleLens.css' %}">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
+    <!-- nivo slider CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'lib/css/nivo-slider.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'lib/css/preview.css' %}" type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- modernizr css -->
+    <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+</head>
+<body>
+<!-- header section start -->
+<header class="pages-header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-4">
+                    <div class="left-header clearfix">
+                        <ul>
+                            <li><p><img src="{% static 'img/ico/Phone-call_icon-icons.com_51956.png' %}" alt="">+(99888)
+                                620-58-58</p></li>
+                            <li><p><img style="margin: 5px" src="{% static 'img/ico/Mail_icon-icons.com_52015.png' %}"
+                                        alt="">id_group@gmail.com</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="right-header">
+                        <ul>
+                           <li><p><img style="margin: 5px" src="{% static 'img/ico/4105931-add-to-cart-buy-cart-sell-shop-shopping-cart_113919.png' %}" alt="">Корзина</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom" id="sticky-menu">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-xs-4">
+                    <div class="logo">
+                       <a href="{% url 'main:index' %}"><img src="{% static 'img/Новый проект.png' %}" alt=""/></a>
+                    </div>
+                </div>
+               <div class="col-sm-10 col-md-10 col-xs-8 static">
+                    <div class="all-manu-area">
+                        <div class="mainmenu clearfix hidden-sm hidden-xs">
+                            <nav>
+                                <ul>
+                                    <li><a href="{% url 'main:index' %}">Главная</a>
+                                    </li>
+                                    <li><a href="{% url 'shop:product_list' %}">Магазин</a>
+                                    </li>
+                                    <li><a href="{% url 'blog:blog' %}">Наш Блог</a></li>
+                                    <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- mobile menu start -->
+                        <div class="mobile-menu-area hidden-lg hidden-md">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul>
+                                        <li><a href="{% url 'main:index' %}">Главная</a>
+                                        </li>
+                                        <li><a href="{% url 'shop:product_list' %}">Магазин</a>
+                                        </li>
+                                        <li><a href="{% url 'blog:blog' %}">Наш Блог</a></li>
+                                        <li><a href="contact.html">Контакты</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- mobile menu end -->
+                        <div class="right-header re-right-header">
+                            <ul>
+                                <li><a href="{% url 'cart:cart_detail' %}"><img style="max-font-size: 20px" src="{% static 'img/ico/4105931-add-to-cart-buy-cart-sell-shop-shopping-cart_113919.png' %}" alt=""><span class="color1">2</span></a>
+                                    <ul class="drop-cart">
+                                       {% for item in cart %}
+                                {% with product=item.product %}
+                                        <li>
+                                            <a href="cart.html"><img src="{% if product.image %}{{ product.image.url }}{% endif %}" alt=""/></a>
+                                            <div class="add-cart-text">
+                                                <p><a href="#">{{ product.name }}</a></p>
+                                                <p>{{ product.price }}</p>
+                                            </div>
+                                        </li>
+
+                                        <li class="total-amount clearfix">
+                                            <span class="floatleft">Общая сумма</span>
+                                            <span class="floatright"><strong>= {{ item.total_price }}</strong></span>
+                                        </li>
+                                    {% endwith %}
+                                    {% endfor %}
+                                        <li>
+                                            <div class="goto text-center">
+                                                <a href="{% url 'cart:cart_detail' %}"><strong>В корзину<i
+                                                        class="pe-7s-angle-right"></i></strong></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="slider-main-area">
+    <div class="main-slider an-si">
+        <div class="bend niceties preview-2 hm-ver-1">
+            <div id="ensign-nivoslider-2" class="slides">
+                <img src="{% static 'img/slider/48277-noutbuk_apple_macbook_svechenie_cveta (1).jpg' %} "
+                     alt=""
+                     title="#slider-direction-3"/>
+                <img src="{% static 'img/slider/pictures_originals_2020Computers_Backlit_laptop_keyboard_142850_ (1).jpg' %}"
+                     alt="" title="#slider-direction-1"/>
+            </div>
+            <!-- direction 1 -->
+            <div id="slider-direction-3" class="t-cn slider-direction Builder">
+                <div class="slide-all">
+                    <!-- layer 1 -->
+                    <div class="layer-1">
+                        <h2 class="title5">добро пожаловать</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <h2 class="title6">ID - SHOP</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <p class="title0">Корзину</p>
+                    </div>
+                </div>
+            </div>
+            <div id="slider-direction-1" class="t-cn slider-direction Builder">
+                <div class="slide-all slide2">
+                    <!-- layer 1 -->
+                    <div class="layer-1">
+                        <h2 class="title5">доставка по всему</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <h2 class="title6">Узбекистану</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <p class="title0">В течении 24 часов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="shopping-cart-area s-cart-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="s-cart-all">
+                    <div class="cart-form table-responsive">
+                        <table id="shopping-cart-table" class="data-table cart-table">
+                            <tr>
+                                <th class="low1">Продукт</th>
+                                <th class="low7">Количество</th>
+                                <th class="low7">Цена</th>
+                                <th class="low7">Общее</th>
+                            </tr>
+                            {% for item in cart %}
+                                {% with product=item.product %}
+                                    <tr>
+                                        <td class="sop-cart an-shop-cart">
+                                            <a href="{{ product.get_absolute_url }}"><img class="primary-image" src="{% if product.image %}{{ product.image.url }}{% endif %}"></a>
+                                            <a href="">{{ product.name }}</a>
+                                        </td>
+                                        <td class="sop-cart an-sh">
+                                            <div class="quantity ray">
+                                                <input class="input-text qty text" type="number" size="4" title="Qty"
+                                                       value="2" min="0" step="1">
+                                            </div>
+                                            <a class="remove" href="#">
+                                                <span>x</span>
+                                            </a>
+                                        </td>
+                                        <td class="sop-cart">
+                                            <div class="tb-product-price font-noraure-3">
+                                                <span class="amount">{{ product.price }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="cen">
+                                            <span class="amount">{{ item.total_price }}</span>
+                                        </td>
+                                    </tr>
+                                {% endwith %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="last-check1">
+                        <div class="yith-wcwl-share yit">
+                            <p class="checkout-coupon an-cop">
+                                <input type="submit" value="Update Cart">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shopping-cart  content section end -->
+<!-- quick view start -->
+<div class="quick-view modal fade in" id="quick-view">
+    <div class="container">
+        <div class="row">
+            <div id="view-gallery" class="owl-carousel product-slider owl-theme">
+                <div class="col-xs-12">
+                    <div class="d-table">
+                        <div class="d-tablecell">
+                            <div class="modal-dialog">
+                                <div class="main-view modal-content">
+                                    <div class="modal-footer" data-dismiss="modal">
+                                        <span>x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- quick view end -->
+<!-- brand section start -->
+<section class="section-padding-top">
+    <div class="brand-logo">
+        <div class="barnd-bg">
+            <div class="container">
+                <div class="row text-center">
+                    <div id="brand-logo" class="re-owl-carousel21 owl-carousel product-slider owl-theme">
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/2.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/3.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/4.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/5.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/6.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/1.png" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="img/brand/3.png" alt=""/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- brand section end -->
+<!-- service section start -->
+<section class="re-section-padding">
+    <div class="service section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/airplane-rotated-diagonal-transport-outlined-symbol_icon-icons.com_73319.png' %}" width="45" height="45" alt=""></i>
+                        <br>
+                        <br>
+                        <h4>Free Shipping</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service res-single">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/976606-appliances-electronics-headphones-loud-music-sound-speaker_106567.png' %}" width="45" height="45" alt=""></i>
+                        <br>
+                        <br>
+                        <h4>Customer Support</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/update_refresh_arrow_icon_132737.png' %}" width="45" height="45" alt=""></i>
+                        <h4>15 days money back</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service section end -->
+<!-- footer section start -->
+<footer class="re-footer-section">
+    <!-- footer-top area start -->
+    <div class="footer-top section-padding-top">
+        <div class="footer-dsc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="single-text res-text">
+                            <div class="footer-title">
+                                <h4>Contact us</h4>
+                                <hr class="dubble-border"/>
+                            </div>
+                            <div class="footer-text">
+                                <ul>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Pin-location-point_icon-icons.com_51943.png' %}" height="30" width="20" alt=""></i>
+                                        <p>My Company, 45 Puffin Street 1245</p>
+                                        <p class="rs">Poffinville France.</p>
+                                    </li>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Phone-call_icon-icons.com_51956.png' %}" height="30" width="20" alt=""></i>
+                                        <p>+201 (987) 6641 053</p>
+                                        <p>+202 (987) 6641 056</p>
+                                    </li>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Mail_icon-icons.com_52015.png' %}" height="20" width="30" alt=""></i>
+                                        <p>info@domainname.com</p>
+                                        <p>company@outlook.com</p>
+                                    </li>
+                                </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 margin-top">
+                        <div class="single-text res-text">
+                            <div class="footer-title">
+                                <h4>customer service</h4>
+                                <hr class="dubble-border"/>
+                            </div>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li class="nm"><a href="#">Gift Vouchers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="dubble-border"/>
+        </div>
+        <div class="social-media">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="paypal social-icon">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="social-icon">
+                            <ul class="floatright">
+                               <li><a><i><img src="{% static 'img/ico/FB_icon-icons.com_65534.png' %}" alt=""></i></a></li>
+                                <li><a><i><img src="{% static 'img/ico/google_icon-icons.com_65550.png' %}" alt=""></i></a></li>
+                                <li><a><i><img src="{% static 'img/ico/INSTAGRAM_icon-icons.com_65535.png' %}" alt=""></i></a></li>
+                                <li><a><i><img src="{% static 'img/ico/telegram (1).png' %}" alt=""></i></a></li>
+                                <li><a><i><img src="{% static 'img/ico/YOUTUBE_icon-icons.com_65537.png' %}" alt=""></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-top area end -->
+    <!-- footer-bottom area start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>&copy; 2020 ID - GROUP. Created by Kudrat Sultanbaev.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom area end -->
+</footer>
+<!-- footer section end -->
+
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+<!-- bootstrap js -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- parallax js -->
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<!-- owl.carousel js -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- Img Zoom js -->
+<script src="{% static 'js/img-zoom/jquery.simpleLens.min.js' %}"></script>
+<!-- meanmenu js -->
+<script src="{% static 'js/jquery.meanmenu.js' %}"></script>
+<!-- jquery.countdown js -->
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<!-- Nivo slider js
+============================================ -->
+<script src="{% static 'lib/js/jquery.nivo.slider.js' %}" type="text/javascript"></script>
+<script src="{% static 'lib/home.js' %}" type="text/javascript"></script>
+<!-- jquery-ui js -->
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- sticky js -->
+<script src="{% static 'js/sticky.js' %}"></script>
+<!-- plugins js -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- main js -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

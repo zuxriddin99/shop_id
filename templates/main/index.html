@@ -1,0 +1,721 @@
+﻿{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Главная || ID - SHOP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon
+    ============================================ -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+    <!-- google fonts -->
+    <link href="{% static 'css/asd.css' %}" rel='stylesheet' type='text/css'>
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- animate css -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- pe-icon-7-stroke -->
+    <link rel="stylesheet" href="{% static 'css/pe-icon-7-stroke.min.css' %}">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+    <!-- Image Zoom CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'css/img-zoom/jquery.simpleLens.css' %}">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
+    <!-- nivo slider CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'lib/css/nivo-slider.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'lib/css/preview.css' %}" type="text/css" media="screen"/>
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- modernizr css -->
+    <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+</head>
+<body>
+<!-- header section start -->
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-4">
+                    <div class="left-header clearfix">
+                        <ul>
+                            <li><p><img src="{% static 'img/ico/Phone-call_icon-icons.com_51956.png' %}" alt="">+(99888) 620-58-58</p></li>
+                            <li><p><img style="margin: 5px" src="{% static 'img/ico/Mail_icon-icons.com_52015.png' %}" alt="">id_group@gmail.com</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="right-header">
+                        <ul>
+                            <li><p><img style="margin: 5px" src="{% static 'img/ico/4105931-add-to-cart-buy-cart-sell-shop-shopping-cart_113919.png' %}" alt="">Корзина</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom header-bottom-one" id="sticky-menu">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-xs-4">
+                    <div class="logo">
+                        <a href="{% url 'main:index' %}"><img src="{% static 'img/Новый проект.png' %}" alt=""/></a>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10 col-xs-8 static">
+                    <div class="all-manu-area">
+                        <div class="mainmenu clearfix hidden-sm hidden-xs">
+                            <nav>
+                                <ul>
+                                    <li><a href="{% url 'main:index' %}">Главная</a>
+                                    </li>
+                                    <li><a href="{% url 'shop:product_list' %}">Магазин</a>
+                                    </li>
+                                    <li><a href="{% url 'blog:blog' %}">Наш Блог</a></li>
+                                    <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- mobile menu start -->
+                        <div class="mobile-menu-area hidden-lg hidden-md">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul>
+                                        <li><a href="{% url 'main:index' %}">Главная</a>
+                                        </li>
+                                        <li><a href="{% url 'shop:product_list' %}">Магазин</a>
+                                            <ul>
+                                                <li>
+                                                    {% for category in categories %}
+                                                        <span>Категории</span>
+                                                        <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="{% url 'blog:blog' %}">Наш Блог</a></li>
+                                        <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- mobile menu end -->
+                        <div class="right-header re-right-header">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header section end -->
+<!-- slider-section-start -->
+<section class="slider-main-area">
+    <div class="main-slider an-si">
+        <div class="bend niceties preview-2 hm-ver-1">
+            <div id="ensign-nivoslider-2" class="slides">
+                <img src="{% static 'img/slider/noutbuk_klavishi_svechenie_170138_3840x2400.jpg' %} " alt=""
+                     title="#slider-direction-3"/>
+                <img src="{% static 'img/slider/evan-winters-2-v2 (1).jpg' %}" alt="" title="#slider-direction-1"/>
+            </div>
+            <!-- direction 1 -->
+            <div id="slider-direction-3" class="t-cn slider-direction Builder">
+                <div class="slide-all">
+                    <!-- layer 1 -->
+                    <div class="layer-1">
+                        <h2 class="title5">новые поступления</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <h2 class="title6">ID - SHOP</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <p class="title0">ПЕРЕХОДИ В МАГАЗИН</p>
+                    </div>
+                    <!-- layer 3 -->
+                    <div class="layer-3">
+                        <a class="min1" href="{% url 'shop:product_list' %}">Магазин</a>
+                    </div>
+                </div>
+            </div>
+            <div id="slider-direction-1" class="t-cn slider-direction Builder">
+                <div class="slide-all slide2">
+                    <!-- layer 1 -->
+                    <div class="layer-1">
+                        <h2 class="title5">доставка по всему</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <h2 class="title6">Узбекистану</h2>
+                    </div>
+                    <!-- layer 2 -->
+                    <div class="layer-2">
+                        <p class="title0">В течении 24 часов</p>
+                    </div>
+                    <!-- layer 3 -->
+                    <div class="layer-3">
+                        <a class="min1" href="{% url 'shop:product_list' %}">Магазин</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- slider section end -->
+<!-- collection section start -->
+<div class="banner-area">
+    <div class="container">
+        <div class="section-padding1">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="banner-box banner-box-re">
+                        <a href="{% url 'shop:product_list' %}">
+                            <img alt="" src="{% static 'img/banner/scale_1200.jpg' %}">
+                            <div>
+                                <h2>
+                                    DELL INSPIRON 7567
+                                    <span>- красный герой</span>
+                                </h2>
+                                <p style="">Процессор:Core i7 7700 HQ (2800 МГц) 6 ядер
+                                    Оперативная память-8 Gb
+                                    Видеокарта-NVIDIA GeForce GTX 1050</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="banner-box res-btm">
+                        <a href="{% url 'shop:product_list' %}">
+                            <img alt="" src="{% static 'img/banner/scale_1220 (1).jpg' %}">
+                            <div>
+                                <h2>
+                                    Alienware 17 R4
+                                    <span>- Инопланетянин</span>
+                                </h2>
+                                <p>Процессор-Core i7 7700 HQ (2800 МГц) 6 ядер
+                                    Оперативная память-16 Гб
+                                    Видеокарта-NVIDIA GeForce GTX 1070 </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="banner-container banner-box res-btm">
+                        <a href="{% url 'shop:product_list' %}">
+                            <img alt=""
+                                 src="{% static 'img/banner/cyberpunk-digital-art-futuristic-science-fiction-wallpaper-1931889 (1).jpg' %}">
+                            <div>
+                                <h2>
+                                    Лучшие игровые
+                                    <span>Ноутбуки 2020</span>
+                                </h2>
+                                <p>Выбирай лучшее, играй с удовольствием!</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="banner-box banner-box-re">
+                        <a href="{% url 'shop:product_list' %}">
+                            <img alt="" src="{% static 'img/banner/scale_120sd0.jpg' %}">
+                            <div>
+                                <h2>
+                                    Razer Blade 15
+                                    <span>Advanced (2019)</span>
+                                </h2>
+                                <p>Intel Core i7 9-го поколения
+                                    Экран FHD с разрешением 15.6 дюйма и кадровой разверткой 240 Гц
+                                    16 Гб ОЗУ + 512 Гб SSD
+                                    </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="banner-box">
+                        <a href="{% url 'shop:product_list' %}">
+                            <img alt="" src="{% static 'img/banner/scale_1200as.jpg' %}">
+                            <div>
+                                <h2>
+                                    ASUS TUF Gaming
+                                    <span>FX705</span>
+                                </h2>
+                                <p>Процессор AMD Ryzen 5 3550H с частотой 2.1 ГГц
+                                    Экран диагональю 17.3 дюйма с разрешением FHD
+                                    8 Гб ОЗУ </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- collection section end -->
+<!-- new-products section start -->
+<section class="testimonials stripe-parallax-bg" data-parallax-speed="0.5">
+    <div class="re-testimonials" style="background-image: url({% static 'img/slider/kos.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title re-section-title">
+                        <h3>ОТЗЫВЫ</h3>
+                        <div class="section-icon re-section1">
+                            <i><img src="{% static 'img/ico/dot-inside-a-circle_icon-icons.com_70195.png' %}" width="17" height="17" alt=""></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-text-center text-center">
+                    <div id="testimonials" class="re-owl-carousel2 owl-carousel product-slider owl-theme">
+                        <div class="single-testimonial">
+                            <div class="testimonial-dsc">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. <br>Ut enim ad minim veniam, quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                    fugiat nulla pariatur.</p>
+                            </div>
+                            <div class="testimonial-img">
+                                <a href="#"><img
+                                        src="{% static 'img/testimonial/ford_mustang_gtr_ford_mashina_143660_3840x2160.jpg' %}"
+                                        alt="Title"/></a>
+                                <h4><a href="#">Raymond Morales</a></h4>
+                                <span>chairman</span>
+                            </div>
+                        </div>
+                        <!-- single testimonial item end -->
+                        <div class="single-testimonial">
+                            <div class="testimonial-dsc">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur.</p>
+                            </div>
+                            <div class="testimonial-img">
+                                <a href="#"><img
+                                        src="{% static 'img/testimonial/ford_mustang_gtr_ford_mashina_143660_3840x2160.jpg' %}"
+                                        alt="Title"/></a>
+                                <h4><a href="#">Raymond Morales</a></h4>
+                                <span>chairman</span>
+                            </div>
+                        </div>
+                        <!-- single testimonial item end -->
+                        <div class="single-testimonial">
+                            <div class="testimonial-dsc">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur.</p>
+                            </div>
+                            <div class="testimonial-img">
+                                <a href="#"><img
+                                        src="{% static 'img/testimonial/ford_mustang_gtr_ford_mashina_143660_3840x2160.jpg' %}"
+                                        alt="Title"/></a>
+                                <h4><a href="#">Raymond Morales</a></h4>
+                                <span>chairman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="quick-view modal fade in" id="quick-view">
+    <div class="container">
+        <div class="row">
+            <div id="view-gallery" class="owl-carousel product-slider owl-theme">
+                <div class="col-xs-12">
+                    <div class="d-table">
+                        <div class="d-tablecell">
+                            <div class="modal-dialog">
+                                <div class="main-view modal-content">
+                                    <div class="modal-footer" data-dismiss="modal">
+                                        <span>x</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5">
+                                            <div class="quick-image">
+                                                <div class="single-quick-image tab-content text-center">
+                                                    <div class="tab-pane  fade in active" id="sin-pro-1">
+                                                        <img src="
+                                                                {% if product.image.url %}{{ product.image }}{% endif %}"
+                                                             alt=""/>
+                                                    </div>
+                                                    <div class="tab-pane fade in" id="sin-pro-2">
+                                                        <img src="img/quick-view/10.jpg" alt=""/>
+                                                    </div>
+                                                    <div class="tab-pane fade in" id="sin-pro-3">
+                                                        <img src="img/quick-view/10.jpg" alt=""/>
+                                                    </div>
+                                                    <div class="tab-pane fade in" id="sin-pro-4">
+                                                        <img src="img/quick-view/10.jpg" alt=""/>
+                                                    </div>
+                                                </div>
+                                                <div class="quick-thumb">
+                                                    <div class="nav nav-tabs">
+                                                        <ul>
+                                                            <li><a data-toggle="tab" href="#sin-pro-1"> <img
+                                                                    src="img/quick-view/10.jpg" alt="quick view"/> </a>
+                                                            </li>
+                                                            <li><a data-toggle="tab" href="#sin-pro-2"> <img
+                                                                    src="img/quick-view/10.jpg" alt="quick view"/> </a>
+                                                            </li>
+                                                            <li><a data-toggle="tab" href="#sin-pro-3"> <img
+                                                                    src="img/quick-view/10.jpg" alt="quick view"/> </a>
+                                                            </li>
+                                                            <li><a data-toggle="tab" href="#sin-pro-4"> <img
+                                                                    src="img/quick-view/10.jpg" alt="quick view"/> </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-7">
+                                            <div class="quick-right">
+                                                <div class="quick-right-text">
+                                                    <h3><strong>product name title</strong></h3>
+                                                    <div class="rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-o"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <a href="#">06 Review</a>
+                                                        <a href="#">Add review</a>
+                                                    </div>
+                                                    <div class="amount">
+                                                        <h4>$65.00</h4>
+                                                    </div>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has beenin the stand ard dummy text ever
+                                                        since the 1500s, when an unknown printer took a galley of type
+                                                        and scrames bled it make a type specimen book. It has survived
+                                                        not only five centuries, but also the leap into electronic type
+                                                        setting, remaining essentially unchanged It was popularised in
+                                                        the 1960s with the release of Letraset sheets containing Lorem
+                                                        Ipsum passages.</p>
+                                                    <div class="row m-p-b">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="por-dse responsive-strok clearfix">
+                                                                <ul>
+                                                                    <li><span>Availability</span><strong>:</strong> In
+                                                                        stock
+                                                                    </li>
+                                                                    <li><span>Condition</span><strong>:</strong> New
+                                                                        product
+                                                                    </li>
+                                                                    <li><span>Category</span><strong>:</strong> <a
+                                                                            href="#">Men</a> <a href="#">Fashion</a> <a
+                                                                            href="#">Shirt</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="por-dse color">
+                                                                <ul>
+                                                                    <li><span>color</span><strong>:</strong> <a
+                                                                            href="#">Red</a> <a href="#">Green</a> <a
+                                                                            href="#">Blue</a> <a href="#">Orange</a>
+                                                                    </li>
+                                                                    <li><span>size</span><strong>:</strong> <a href="#">SL</a>
+                                                                        <a href="#">SX</a> <a href="#">M</a> <a
+                                                                                href="#">XL</a></li>
+                                                                    <li><span>tag</span><strong>:</strong> <a href="#">Men</a>
+                                                                        <a href="#">Fashion</a> <a href="#">Shirt</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dse-btn">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-6">
+                                                                <div class="por-dse clearfix">
+                                                                    <ul>
+                                                                        <li class="share-btn qty clearfix"><span>quantity</span>
+                                                                            <form action="#" method="POST">
+                                                                                <div class="plus-minus">
+                                                                                    <a class="dec qtybutton">-</a>
+                                                                                    <input type="text" value="02"
+                                                                                           name="qtybutton"
+                                                                                           class="plus-minus-box">
+                                                                                    <a class="inc qtybutton">+</a>
+                                                                                </div>
+                                                                            </form>
+                                                                        </li>
+                                                                        <li class="share-btn clearfix">
+                                                                            <span>share</span>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-facebook"></i></a>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-twitter"></i></a>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-google-plus"></i></a>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-linkedin"></i></a>
+                                                                            <a href="#"><i class="fa fa-instagram"></i></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-6">
+                                                                <div class="por-dse clearfix responsive-othre">
+                                                                    <ul class="other-btn">
+                                                                        <li><a href="#"><i class="fa fa-heart"></i></a>
+                                                                        </li>
+                                                                        <li><a href="#"><i
+                                                                                class="fa fa-refresh"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-envelope-o"></i></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="por-dse add-to">
+                                                                    <a href="#">add to cart</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- quick view end -->
+<!-- brand section start -->
+<section class="section-padding-top">
+    <div class="brand-logo">
+        <div class="barnd-bg">
+            <div class="container">
+                <div class="row text-center">
+                    <div id="brand-logo" class="re-owl-carousel21 owl-carousel product-slider owl-theme">
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/1.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/2.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/3.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/4.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/5.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/6.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/1.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="single-brand">
+                                <a href="#"><img src="{% static 'img/brand/3.png' %}" alt=""/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- brand section end -->
+<!-- service section start -->
+<section class="re-section-padding">
+    <div class="service section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/airplane-rotated-diagonal-transport-outlined-symbol_icon-icons.com_73319.png' %}" width="45" height="45" alt=""></i>
+                        <br>
+                        <br>
+                        <h4>Бесплатная доставка</h4>
+                        <p>По всему узбекистану в течении 24 часов.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service res-single">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/976606-appliances-electronics-headphones-loud-music-sound-speaker_106567.png' %}" width="45" height="45" alt=""></i>
+                        <br>
+                        <br>
+                        <h4>Служба поддержки</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="single-service">
+                        <i><img style="padding: 5px" src="{% static 'img/ico/update_refresh_arrow_icon_132737.png' %}" width="45" height="45" alt=""></i>
+                        <br>
+                        <br>
+                        <h4>Возврат денег за 15 дней</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service section end -->
+<!-- footer section start -->
+<footer class="re-footer-section">
+    <!-- footer-top area start -->
+    <div class="footer-top section-padding-top">
+        <div class="footer-dsc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="single-text res-text">
+                            <div class="footer-title">
+                                <h4>Контакты</h4>
+                                <hr class="dubble-border"/>
+                            </div>
+                            <div class="footer-text">
+                                <ul>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Pin-location-point_icon-icons.com_51943.png' %}" height="30" width="20" alt=""></i>
+                                        <p>Хорезмская область. Город Ургенч. Ул. Пахловон Махмуд</p>
+                                        <p class="rs">ID - SHOP</p>
+                                    </li>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Phone-call_icon-icons.com_51956.png' %}" height="30" width="20" alt=""></i>
+                                        <p>+(99888) 620-58-58</p>
+                                        <p>+(99888) 620-58-58</p>
+                                    </li>
+                                    <li>
+                                        <i><img src="{% static 'img/ico/Mail_icon-icons.com_52015.png' %}" height="20" width="30" alt=""></i>
+                                        <p>id_group@gmail.com</p>
+                                        <p>id_group@gmail.com</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 margin-top">
+                        <div class="single-text res-text">
+                            <div class="footer-title">
+                                <h4>Сервис</h4>
+                                <hr class="dubble-border"/>
+                            </div>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li class="nm"><a href="#">Gift Vouchers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="dubble-border"/>
+        </div>
+        <div class="social-media">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="paypal social-icon">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="social-icon">
+                            <ul class="floatright">
+                                <li><a href="https://www.facebook.com/"><i><img src="{% static 'img/ico/FB_icon-icons.com_65534.png' %}" alt=""></i></a></li>
+                                <li><a href="https://www.google.com/"><i><img src="{% static 'img/ico/google_icon-icons.com_65550.png' %}" alt=""></i></a></li>
+                                <li><a href="https://www.instagram.com/"><i><img src="{% static 'img/ico/INSTAGRAM_icon-icons.com_65535.png' %}" alt=""></i></a></li>
+                                <li><a href="https://www.telegram.com"><i><img src="{% static 'img/ico/telegram (1).png' %}" alt=""></i></a></li>
+                                <li><a href="https://www.youtube.com"><i><img src="{% static 'img/ico/YOUTUBE_icon-icons.com_65537.png' %}" alt=""></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-top area end -->
+    <!-- footer-bottom area start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>&copy; 2020 ID - GROUP. Created by Kudrat Sultanbaev.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom area end -->
+</footer>
+<!-- footer section end -->
+
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+<!-- bootstrap js -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- parallax js -->
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<!-- owl.carousel js -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- Img Zoom js -->
+<script src="{% static 'js/img-zoom/jquery.simpleLens.min.js' %}"></script>
+<!-- meanmenu js -->
+<script src="{% static 'js/jquery.meanmenu.js' %}"></script>
+<!-- jquery.countdown js -->
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<!-- Nivo slider js
+============================================ -->
+<script src="{% static 'lib/js/jquery.nivo.slider.js' %}" type="text/javascript"></script>
+<script src="{% static 'lib/home.js' %}" type="text/javascript"></script>
+<!-- jquery-ui js -->
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- sticky js -->
+<script src="{% static 'js/sticky.js' %}"></script>
+<!-- plugins js -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- main js -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
